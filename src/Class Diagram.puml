@@ -1,0 +1,27 @@
+@startuml
+'https://plantuml.com/class-diagram
+!pragma layout smetana
+
+class Node<K,V> {
+    + K key
+    + V value
+    + Node<K,V> prev
+    + Node<K,V> next
+}
+
+class LRUCache<K,V> {
+    - int capacity
+    - Map<K, Node<K,V>> cache
+    - Node<K,V> head
+    - Node<K,V> tail
+    + V get(K key)
+    + void put(K key, V value)
+    - void removeNode(Node<K,V> node)
+    - void addToHead(Node<K,V> node)
+    - void moveToHead(Node<K,V> node)
+    - Node<K,V> removeTail()
+}
+
+LRUCache *-- Node
+
+@enduml
